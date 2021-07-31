@@ -1,0 +1,45 @@
+.calculator {
+  background-color: #1010;
+  color: #fff;
+}
+#calform {
+  margin: 0px 35vw 0px 35vw;
+  padding: 30px !important;
+  background-color: #333 !important;
+  border: #000 2px;
+  border-radius: 10px;
+  position: absolute;
+  max-width: 300px;
+  height: inherit;
+  align-items: center;
+  text-align: center;
+}
+#number {
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  width: 50px;
+  border: #000 solid;
+}
+#number:clicked {
+  background-color: #fff;
+  color: #000;
+}
+#display {
+  border-radius: 10px !important;
+  border-color: #000;
+  margin-bottom: 30px;
+  max-width: inherit;
+  max-height: 50px;
+  color: #fff;
+  font-weight: bold;
+  font-size: large;
+}
+input {
+  position: relative;
+  border-radius: 50%;
+  margin: 2px;
+  height: 50px;
+  width: 50px;
+  font-weight: bold;
+}
