@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="calc.css" />
+    <title>Simple Calculator Showing JS event listeners</title>
+</head>
+
+<body>
+    <noscript><h1>
+        PLEASE ENABLE JAVASCRIPT IN YOUR BROWSER TO REALLY USE THE WEBSITE EFFICIENTLY
+      </h1></noscript
+    >
+    <div class="calculator">
+      <form id="calform" name="cal">
+        <h1>Course:</h1>
+        <h1>Simple Calculator</h1>
+        <h2>Name:</h2>
+        <h2>Email:</h2>
+        <input
+          type="text"
+          id="display"
+          name="display"
+          style="width: 675px; height: 100px;text-align: center; background-color: #000;"
+        /><br />
+        <input type="button" id="number" value="0" onclick="cal.display.value+='0'" />
+        <input type="button" id="number" value="1" onclick="cal.display.value+='1'" />
+        <input type="button" id="number" value="2" onclick="cal.display.value+='2'" />
+        <input
+          type="button"
+          value="-"
+          onclick="cal.display.value+='-'"
+          style="color:white;background-color:rgb(211, 83, 83);border:rgb(211, 83, 83) solid; font-size: larger;"
+        />
+        <input
+          type="button"
+          value="+"
+          onclick="cal.display.value+='+'"
+          style="color:white;background-color:rgb(0, 142, 236);border:rgb(0, 142, 236) solid; font-size: larger;"
+        /><br />
+        <input type="button" id="number" value="3" onclick="cal.display.value+='3'" />
+        <input type="button" id="number" value="4" onclick="cal.display.value+='4'" />
+        <input type="button" id="number" value="5" onclick="cal.display.value+='5'" />
+        <input
+          type="button"
+          value="&#247;"
+          onclick="cal.display.value+='/'"
+          style="color:white;background-color:rgb(211, 83, 83);border:rgb(211, 83, 83) solid; font-size: larger;"
+        />
+        <input
+          type="button"
+          value="x"
+          onclick="cal.display.value+='*'"
+          style="color:white;background-color:rgb(0, 142, 236);border:rgb(0, 142, 236) solid; font-size: larger;"
+        />
+
+        <br />
+        <input type="button" id="number" value="6" onclick="cal.display.value+='6'" />
+        <input type="button" id="number" value="7" onclick="cal.display.value+='7'" />
+        <input type="button" id="number" value="8" onclick="cal.display.value+='8'" />
+        <input
+          type="button"
+          value="("
+          onclick="cal.display.value+='('"
+          style="color:black;background-color:white;border:white solid; font-size: larger;"
+        />
+        <input
+          type="button"
+          value=")"
+          onclick="cal.display.value+=')'"
+          style="color:black;background-color:white;border:white solid; font-size: larger;"
+        />
+        <br />
+        <input
+          type="button"
+          value="C"
+          onclick="cal.display.value=''"
+          style="color:#000;background-color:white;border:white solid; font-size: 1em;"
+        />
+
+        <input type="button" id="number" value="9" onclick="cal.display.value+='9'" />
+        <input
+          type="button"
+          value="."
+          onclick="cal.display.value+='.'"
+          style="color:black;background-color:white;border:white solid; font-size: 1em;"
+        />
+
+        <input
+          type="button"
+          id="equal"
+          value="="
+          onclick="cal.display.value=eval(cal.display.value)"
+          style="color:white;background-color:rgb(78, 165, 75);border:rgb(78, 165, 75) solid; font-size: larger;width:110px !important; border-radius: 10px !important;"
+        />
+      </form>
+    </div>
+  </body>
+</html>

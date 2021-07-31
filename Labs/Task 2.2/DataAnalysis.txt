@@ -1,0 +1,79 @@
+DATA ANALYSIS
+(to count files per line)
+ [ralli@so125 ~]$ wc -l links.csv  (output: 9742 links.csv)
+ [ralli@so125 ~]$ wc -l movies.csv (output: 9742 movies.csv)
+ [ralli@so125 ~]$ wc -l ratings.csv (output: 100836 ratings.csv)
+ [ralli@so125 ~]$ wc -l tags.csv (output: 3683 tags.csv)
+
+(to view files)
+HEAD
+ [ralli@so125 ~]$ head -n 10 links.csv
+    movieId,imdbId,tmdbId
+    1,0114709,862
+    2,0113497,8844
+    3,0113228,15602
+    4,0114885,31357
+    5,0113041,11862
+    6,0113277,949
+    7,0114319,11860
+    8,0112302,45325
+    9,0114576,9091
+	
+ [ralli@so125 ~]$ head -n 5 movies.csv
+    movieId,title,genres
+    1,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+    2,Jumanji (1995),Adventure|Children|Fantasy
+    3,Grumpier Old Men (1995),Comedy|Romance
+    4,Waiting to Exhale (1995),Comedy|Drama|Romance
+	
+ [ralli@so125 ~]$ head -n 1 ratings.csv 
+    userId,movieId,rating,timestamp
+	
+ [ralli@so125 ~]$ head -n 20 tags.csv
+    userId,movieId,tag,timestamp
+    2,60756,funny,1445714994
+    2,60756,Highly quotable,1445714996
+    2,60756,will ferrell,1445714992
+    2,89774,Boxing story,1445715207
+    2,89774,MMA,1445715200
+    2,89774,Tom Hardy,1445715205
+    2,106782,drugs,1445715054
+    2,106782,Leonardo DiCaprio,1445715051
+    2,106782,Martin Scorsese,1445715056
+    7,48516,way too long,1169687325
+    18,431,Al Pacino,1462138765
+    18,431,gangster,1462138749
+    18,431,mafia,1462138755
+    18,1221,Al Pacino,1461699306
+    18,1221,Mafia,1461699303
+    18,5995,holocaust,1455735472
+    18,5995,true story,1455735479
+    18,44665,twist ending,1456948283
+    18,52604,Anthony Hopkins,1457650696
+TAIL
+ [ralli@so125 ~]$ tail -n 15 links.csv
+    190213,3977428,364002
+    190215,7293380,479871
+    190219,0179011,48610
+    190221,3333182,460631
+    191005,5805470,432985
+    193565,1636780,71172
+    193567,2323836,255413
+    193571,3110014,297825
+    193573,3837248,333623
+    193579,5342766,360617
+    193581,5476944,432131
+    193583,5914996,445030
+    193585,6397426,479308
+    193587,8391976,483455
+    193609,0101726,37891
+	
+ [ralli@so125 ~]$ tail -n 5 movies.csv
+    193581,Black Butler: Book of the Atlantic (2017),Action|Animation|Comedy|Fantasy
+    193583,No Game No Life: Zero (2017),Animation|Comedy|Fantasy
+    193585,Flint (2017),Drama
+    193587,Bungo Stray Dogs: Dead Apple (2018),Action|Animation
+    193609,Andrew Dice Clay: Dice Rules (1991),Comedy
+GREP
+ [ralli@so125 ~]$ grep -i "1" ratings.csv | wc -l
+    233

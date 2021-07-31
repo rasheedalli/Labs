@@ -1,0 +1,39 @@
+SVN INSTALLATION
+ login to system user
+ [ralli@so125 ~]$ yum install subversion
+ [ralli@so125 ~]$ svn --version
+ [ralli@so125 ~]# yum install mod_dav_svn subversion (to install Apache httpd module and svnadmin tool on server)
+ 
+USER SETUP
+(creating user rasheed)
+ [ralli@so125 ~]# htpasswd -cm /etc/svn-users tom
+ New password: 
+ Re-type new password: 
+ (Adding password for user rasheed)
+ [ralli@so125 ~]# mkdir /var/www/svn (Creating Subversion parent directory to store all the work)
+ [ralli@so125 ~]# cd /var/www/svn
+
+REPOSITORY SETUP
+ [ralli@so125 ~]# svnadmin create project_rash
+ [ralli@so125 ~]# chown -R apache.apache project_rash/ (changing the user and group ownership of the repository)
+ [ralli@so125 ~]# chcon -R -t httpd_sys_content_t /var/www/svn/project_rash/ (changing the SELinux security context)
+ [ralli@so125 ~]# chcon -R -t httpd_sys_rw_content_t /var/www/svn/project_rash/ (commiting)
+ [ralli@so125 ~]# service httpd restart (restarting the Apache server)
+creating the trunk,tags and branches directory structure under the project repository
+ [ralli@so125 ~]# mkdir /tmp/svn-template
+ [ralli@so125 ~]# mkdir /tmp/svn-template/trunk
+ [ralli@so125 ~]# mkdir /tmp/svn-template/branches
+ [ralli@so125 ~]# mkdir /tmp/svn-template/tags
+
+ [ralli@so125 ~]# svn import -m 'Create trunk, branches, tags directory structure' /tmp/svn-template/ 
+ (import the directories from /tmp/svn-template to the repository)
+ 
+TO ADD A NEW FILE 
+ [ralli@so125 ~]$ svn add links.csv
+ [ralli@so125 ~]$ svn add movies.csv
+ [ralli@so125 ~]$ svn add ratings.csv
+ [ralli@so125 ~]$ svn add tags.csv
+(adding files from movielens)
+ [ralli@so125 ~]$ svn commit (commiting the changes)
+ 
+
