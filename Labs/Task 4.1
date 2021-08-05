@@ -1,0 +1,133 @@
+SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+
+(Downloading and Installing SQLite)
+C:\>sqlite3
+SQLite version 3.36.0 2021-06-18 18:36:39(there's SQLite installed on my Linux machine)
+
+(to see default setting for the SQLite command prompt we use the .show command)
+sqlite>.show
+     echo: off
+  explain: off
+  headers: off
+     mode: column
+nullvalue: ""
+   output: stdout
+separator: "|"
+    width:
+	
+1) Creating a Database
+$sqlite3 rillimovielens.db
+============================\
+sqlite>.databases
+seq  name             file
+---  ---------------  ----------------------
+0    main             /home/sqlite/rillimovielens.db
+============================\
+sqlite>.quit
+$
+(using the SQLite .quit command to come out of the sqlite prompt)
+
+2) Creating a Table(s)
+---links table
+sqlite> CREATE TABLE rillimovielens.links(
+   movieId INT PRIMARY KEY NOT NULL,
+   imdbId VARCHAR(8) NOT NULL,
+   tmdbId INT NOT NULL
+);
+
+---movies table
+sqlite> CREATE TABLE rillimovielens.movies(
+   movieId INT PRIMARY KEY NOT NULL,
+   title VARCHAR(100) NOT NULL,
+   genres VARCHAR(100) NOT NULL
+);
+
+---ratings table
+sqlite> CREATE TABLE rillimovielens.ratings(
+   userId INT PRIMARY KEY NOT NULL,
+   movieId INT PRIMARY KEY NOT NULL,
+   rating REAL NOT NULL,
+   timestamp INT NOT NULL
+);
+
+---tags table
+sqlite> CREATE TABLE rillimovielens.tags(
+   userId INT PRIMARY KEY NOT NULL,
+   movieId INT PRIMARY KEY NOT NULL,
+   tag VARCHAR(100) NOT NULL,
+   timestamp INT NOT NULL
+);
+
+--To verify the tables created
+sqlite>.tables
+links       movies        ratings          tags
+
+3) Inserting records into Tables(using the links table)
+sqlite> INSERT INTO links [(movieId, imdbId, tmdbId)]  
+VALUES (1,0114709,862);
+
+sqlite>.header on
+sqlite>.mode column
+sqlite> SELECT * FROM Links;
+
+movieId     imdbId      tmdbId      
+----------  ----------  ---------- 
+1           0114709     862         
+
+sqlite> SELECT movieId FROM Links;
+
+movieId 
+----------
+1  
+
+--To get schema information
+sqlite> SELECT tbl_name FROM sqlite_master WHERE type = 'table';
+
+tbl_name
+----------
+links
+movies
+ratings
+tags
+
+--to list down complete information about a table 
+sqlite> SELECT sql FROM sqlite_master WHERE type = 'table' AND tbl_name = 'links';
+
+CREATE TABLE rillimovielens.links(
+   movieId INT PRIMARY KEY NOT NULL,
+   imdbId VARCHAR(8) NOT NULL,
+   tmdbId INT NOT NULL
+)
+
+4) Deleting a record in a table
+DELETE FROM links
+WHERE movieId = '1';
+
+--- syntax to drop table
+sqlite>.tables
+links       movies        ratings          tags
+
+DROP TABLE rillimovielens.links;
+sqlite>.tables
+movies        ratings          tags
+
+5) Inserting a text.csv file
+-- for the links table
+sqlite> .mode csv links
+sqlite> .import links.csv links
+
+--for the movies table
+sqlite> .mode csv movies
+sqlite> .import movies.csv movies
+
+--for the ratings table
+sqlite> .mode csv ratings
+sqlite> .import ratings.csv ratings
+
+--for the tags table
+sqlite> .mode csv tags
+sqlite> .import tags.csv tags
+
+--to commit
+sqlite> END TRANSACTION;
