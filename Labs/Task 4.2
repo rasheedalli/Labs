@@ -1,0 +1,82 @@
+<?php
+	
+	// connect to the database
+	$db = new SQLite3('rillimovielens.db');
+
+	function links() {
+		global $db;
+
+		// table name
+		$tablename = "links";
+
+		// query for the records in the table
+		$results = $db->query("SELECT * FROM ' . $tablename ");
+
+		//convert the db to json friendly data structure
+		$data = array();
+		while ($row = $results->fetchArray(SQLITE3)) {
+			array_push($data, $row);
+		}
+
+		// encodes to json odjects
+		echo json_encode($data);
+	}
+
+	function movies() {
+		global $db;
+
+		// table name
+		$tablename = "movies";
+
+		// query for the records in the table
+		$results = $db->query("SELECT * FROM ' . $tablename ");
+
+		//convert the db to json friendly data structure
+		$data = array();
+		while ($row = $results->fetchArray(SQLITE3)) {
+			array_push($data, $row);
+		}
+
+		// encodes to json odjects
+		echo json_encode($data);
+	}
+
+	function ratings() {
+		global $db;
+
+		// table name
+		$tablename = "ratings";
+
+		// query for the records in the table
+		$results = $db->query("SELECT * FROM ' . $tablename ");
+
+		//convert the db to json friendly data structure
+		$data = array();
+		while ($row = $results->fetchArray(SQLITE3)) {
+			array_push($data, $row);
+		}
+
+		// encodes to json odjects
+		echo json_encode($data);
+	}
+
+	function tags() {
+		global $db;
+
+		// table name
+		$tablename = "tags";
+
+		// query for the records in the table
+		$results = $db->query("SELECT * FROM ' . $tablename ");
+
+		//convert the db to json friendly data structure
+		$data = array();
+		while ($row = $results->fetchArray(SQLITE3)) {
+			array_push($data, $row);
+		}
+
+		// encodes to json odjects
+		echo json_encode($data);
+	}
+
+?>
